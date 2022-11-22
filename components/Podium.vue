@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card v-if="$store.getters.podium[1]">
     <v-card-title>Podium</v-card-title>
     <v-card-text>
       <div class="container podium">
