@@ -18,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Polla Mundial ⚽️</v-toolbar-title>
       <v-spacer />
@@ -31,20 +31,19 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
+    <v-footer app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "DefaultLayout",
   data() {
     return {
-      clipped: false,
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: "mdi-podium",
@@ -57,11 +56,14 @@ export default {
           to: "/form",
         },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: "Vuetify.js",
     };
+  },
+  mounted() {
+    this.fetchData();
+    this.fetchLastMatch();
+  },
+  methods: {
+    ...mapActions(["fetchData", "fetchLastMatch"]),
   },
 };
 </script>

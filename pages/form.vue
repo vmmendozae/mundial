@@ -1,14 +1,36 @@
 <template>
-  <v-card>
+  <v-card v-if="$store.state.results[0]">
     <v-simple-table>
       <thead>
-        <tr></tr>
+        <tr>
+          <td>{{ data[0][0] }}</td>
+          <td v-for="(d, i) in data[0].slice(2, data.length)" :key="'i' + i">
+            {{ d }}
+          </td>
+        </tr>
       </thead>
       <tbody>
-        <tr v-for="(p, index) in data" :key="index">
+        <tr v-for="(p, index) in data.slice(1, data.length)" :key="index">
           <td>{{ p[0] }}</td>
-          <td v-for="r in vector" :key="r[0]">
-            {{ name2flag(p[r]) }}
+          <td
+            v-for="(r, index) in vector"
+            :key="index + 'idx'"
+            class="text-center"
+          >
+            <v-chip
+              v-if="$store.state.results[index]"
+              dark
+              :color="
+                $store.state.results[index].winner == p[index + 2]
+                  ? 'success'
+                  : ''
+              "
+            >
+              <span>
+                {{ name2flag(p[index + 2]) }}
+                <div v-if="$store.state.results[index]" class="bgd"></div>
+              </span>
+            </v-chip>
           </td>
         </tr>
       </tbody>
@@ -28,6 +50,11 @@ export default {
         58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
       ],
     };
+  },
+  computed: {
+    vector2() {
+      return new Array(this.$store.state.results.length);
+    },
   },
   async mounted() {
     const APIKey = "AIzaSyAXo_wied5yhzwmH76Til0oAyGhx7jxKFE";
@@ -118,3 +145,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.success {
+  background: green;
+}
+</style>

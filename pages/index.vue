@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import RankingTable from "@/components/RankingTable";
 import Chart from "@/components/Chart";
 import Podium from "@/components/Podium";
@@ -22,13 +21,6 @@ export default {
   components: { RankingTable, Chart, Podium },
   data() {
     return {};
-  },
-  mounted() {
-    this.fetchData();
-    this.fetchLastMatch();
-  },
-  methods: {
-    ...mapActions(["fetchData", "fetchLastMatch"]),
   },
 };
 </script>

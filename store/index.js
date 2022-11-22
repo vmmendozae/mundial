@@ -1,6 +1,7 @@
 export const state = () => ({
     data: [],
-    lastMatch: 0
+    lastMatch: 0,
+    results: []
 })
 
 export const mutations = {
@@ -9,6 +10,9 @@ export const mutations = {
     },
     changeLastMatch(state, input) {
         state.lastMatch = input
+    },
+    changeResults(state, input) {
+        state.results = input
     }
 }
 
@@ -68,6 +72,14 @@ export const actions = {
         const LM = parseInt(data.values.find(e => !e[1])) - 1
 
         commit('changeLastMatch', LM)
+
+        const results = data.values.map(r => {
+            return {
+                played: !!r[1],
+                winner: !!r[1] ? r[1] : undefined
+            }
+        })
+        commit('changeResults', results)
     }
 
 }
