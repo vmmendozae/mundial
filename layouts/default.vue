@@ -1,6 +1,11 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer :mini-variant="drawer" fixed app>
+    <v-navigation-drawer
+      :mini-variant="drawer"
+      fixed
+      app
+      class="d-none d-md-flex"
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -19,21 +24,31 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="d-none d-md-flex"
+      />
       <v-toolbar-title>Polla Mundial ⚽️</v-toolbar-title>
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
-    <v-main>
+    <v-main class="mb-12 mb-md-0">
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    <v-bottom-navigation class="d-flex d-md-none" fixed>
+      <v-btn nuxt link to="/">
+        <span>Inicio</span>
+
+        <v-icon>mdi-podium</v-icon>
+      </v-btn>
+
+      <v-btn nuxt link to="/form">
+        <span>Formulario</span>
+
+        <v-icon>mdi-table</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 

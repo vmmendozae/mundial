@@ -136,7 +136,7 @@ export default {
         return "🇺🇾";
       } else if (name == "Alemania") {
         return "🇩🇪";
-      } else if (name == "Costa Rica") {
+      } else if (name == "Costa Rica" || name == "Costa rica") {
         return "🇨🇷";
       } else if (name == "Australia") {
         return "🇦🇺";
