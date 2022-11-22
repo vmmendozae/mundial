@@ -13,6 +13,20 @@ export default {
   data() {
     return {};
   },
+  watch: {
+    personalRanking() {
+      chartScript(
+        "chart-id",
+        this.$store.getters.personalRanking,
+        this.$store.state.lastMatch
+      );
+    },
+  },
+  computed: {
+    personalRanking() {
+      return this.$store.getters.personalRanking;
+    },
+  },
   mounted() {
     chartScript(
       "chart-id",

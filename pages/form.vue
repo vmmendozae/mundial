@@ -1,5 +1,5 @@
 <template>
-  <v-card v-if="$store.state.results[0]">
+  <v-card v-if="$store.state.results[0] && !load">
     <v-simple-table>
       <thead>
         <tr>
@@ -42,6 +42,7 @@
 export default {
   data() {
     return {
+      load: true,
       data: [],
       vector: [
         2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -69,6 +70,7 @@ export default {
     const { data } = await this.$axios.get(url);
 
     this.data = data.values;
+    this.load = false;
   },
   methods: {
     name2flag(name) {
