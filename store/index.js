@@ -24,6 +24,36 @@ export const getters = {
             return b.total - a.total;
         });
         return data
+    },
+    ranking: (state) => {
+        let data = [...state.data]
+        const ranking = []
+        state.data.forEach((e, index) => {
+            data.sort(function (a, b) {
+                return b.acomulado[index] - a.acomulado[index];
+            });
+            const d = data.map(e => {
+                return { name: e.name, points: e.acomulado[index] }
+            })
+            ranking.push(d)
+        })
+        return ranking
+    },
+    personalRanking: (state, getters) => {
+        let generalRanking = []
+        state.data.forEach((person, index) => {
+            let ranking = []
+            getters.ranking.forEach((rank, idx) => {
+                const aux = rank.find(e => e.name == person.name)
+
+                let position = rank.indexOf(aux)
+                ranking.push(
+                    position
+                )
+            })
+            generalRanking.push({ name: person.name, rank: ranking })
+        })
+        return generalRanking
     }
 }
 
@@ -47,10 +77,21 @@ export const actions = {
             results.forEach(t => {
                 total += parseInt(t)
             })
+
+            let acomulado = []
+            results.forEach((r, i) => {
+                if (i == 0) {
+                    acomulado.push(parseInt(r))
+                } else {
+                    acomulado.push(parseInt(r) + parseInt(acomulado[i - 1]))
+                }
+            })
+
             return {
                 id: index,
                 name: e[0],
                 results: results.map(e => parseInt(e)),
+                acomulado: acomulado,
                 total
             }
         })

@@ -16,7 +16,7 @@ export default {
   mounted() {
     chartScript(
       "chart-id",
-      this.$store.state.data,
+      this.$store.getters.personalRanking,
       this.$store.state.lastMatch
     );
   },

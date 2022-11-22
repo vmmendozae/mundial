@@ -7,7 +7,7 @@ export default function chartScript(id, data, lastMatch) {
     data.forEach(e => {
         chartSeries.push({
             name: e.name,
-            data: e.results.slice(0, lastMatch)
+            data: e.rank.slice(0, lastMatch).map(r => r + 1)
         })
     })
 
@@ -29,9 +29,15 @@ export default function chartScript(id, data, lastMatch) {
         },
         yAxis: {
             title: {
-                text: 'Potencia [kW]'
+                text: ''
             },
-            visible: true,
+            visible: false,
+            reversed: true,
+            max: 25,
+            min: 1
+        },
+        xAxis: {
+            visible: false
         },
         tooltip: {
             formatter() {
@@ -39,7 +45,7 @@ export default function chartScript(id, data, lastMatch) {
                     this.series.name +
                     ': <b>' +
                     numeral(this.y).format('0,0') +
-                    '</b> kW'
+                    '</b> Puesto'
                 ) // Ajuste centavos a pesos
             }
         },
