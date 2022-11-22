@@ -23,6 +23,8 @@
               :color="
                 $store.state.results[index].winner == p[index + 2]
                   ? 'success'
+                  : $store.state.results[index].played
+                  ? 'error'
                   : ''
               "
             >
