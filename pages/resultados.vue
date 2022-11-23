@@ -3,7 +3,12 @@
     <v-simple-table>
       <thead>
         <tr>
-          <td class="name text-center">{{ data[0][0] }}</td>
+          <td class="name text-center">
+            {{ data[0][0] }}
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
           <td
             v-for="(d, i) in data[0].slice(2, data[0].length - 3)"
             :key="'i' + i"
@@ -37,6 +42,9 @@
               ★</small
             >
           </td>
+          <td></td>
+          <td></td>
+          <td></td>
           <td
             v-for="(r, index) in vector"
             :key="index + 'idx'"
@@ -180,15 +188,15 @@ export default {
   background: green;
 }
 .name {
-  position: -webkit-sticky;
-  position: sticky;
+  /* position: -webkit-sticky; */
+  position: absolute;
   background: #1e1e1e;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 105px;
+  min-width: 125px;
   left: -1px;
-  padding: 0px !important;
+  padding: 0px 8px !important;
 }
 </style>
