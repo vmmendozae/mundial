@@ -70,7 +70,7 @@ body {
 }
 
 .podium .first {
-  min-height: 140px;
+  min-height: 150px;
   background: rgb(255, 172, 37);
   background: linear-gradient(
     333deg,
@@ -82,12 +82,12 @@ body {
 }
 
 .podium .second {
-  min-height: 100px;
+  min-height: 120px;
   background: darkcyan;
 }
 
 .podium .third {
-  min-height: 60px;
+  min-height: 100px;
   background: darkolivegreen;
 }
 </style>
