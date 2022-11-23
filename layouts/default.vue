@@ -38,13 +38,13 @@
     </v-main>
     <v-bottom-navigation class="d-flex d-md-none" fixed>
       <v-btn nuxt link to="/">
-        <span>Inicio</span>
+        <span>Ranking</span>
 
         <v-icon>mdi-podium</v-icon>
       </v-btn>
 
-      <v-btn nuxt link to="/form">
-        <span>Formulario</span>
+      <v-btn nuxt link to="/resultados">
+        <span>Resultados</span>
 
         <v-icon>mdi-table</v-icon>
       </v-btn>
@@ -62,13 +62,13 @@ export default {
       items: [
         {
           icon: "mdi-podium",
-          title: "Inicio",
+          title: "Ranking",
           to: "/",
         },
         {
           icon: "mdi-table",
-          title: "Formulario",
-          to: "/form",
+          title: "Resultados",
+          to: "/resultados",
         },
       ],
     };

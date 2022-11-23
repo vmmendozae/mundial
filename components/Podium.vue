@@ -1,8 +1,8 @@
 <template>
-  <v-card v-if="$store.getters.podium[1]">
+  <v-card v-if="$store.getters.podium[1]" class="fill-height">
     <v-card-title>Podium</v-card-title>
-    <v-card-text>
-      <div class="container podium">
+    <v-card-text class="fill-height">
+      <div class="container podium mt-md-12 pt-md-12">
         <div class="podium__item">
           <p class="podium__city">{{ $store.getters.podium[1].name }}</p>
           <div class="podium__rank second">
@@ -70,7 +70,7 @@ body {
 }
 
 .podium .first {
-  min-height: 200px;
+  min-height: 140px;
   background: rgb(255, 172, 37);
   background: linear-gradient(
     333deg,
@@ -82,12 +82,12 @@ body {
 }
 
 .podium .second {
-  min-height: 150px;
+  min-height: 100px;
   background: darkcyan;
 }
 
 .podium .third {
-  min-height: 100px;
+  min-height: 60px;
   background: darkolivegreen;
 }
 </style>

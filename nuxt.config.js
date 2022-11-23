@@ -7,8 +7,8 @@ export default {
     fallback: true
   },
   head: {
-    titleTemplate: '%s - mundial',
-    title: 'mundial',
+    titleTemplate: '',
+    title: 'Polla Mundial',
     htmlAttrs: {
       lang: 'en'
     },

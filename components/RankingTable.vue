@@ -5,16 +5,20 @@
       <v-simple-table>
         <thead>
           <tr>
+            <td>Posición</td>
             <td>Nombre</td>
             <td>Puntos</td>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(p, index) in $store.getters.podium" :key="p.id">
-            <td>
+            <td class="text-center">
               <span v-if="index == 0">🥇</span>
-              <span v-if="index == 1">🥈</span>
-              <span v-if="index == 2">🥉</span>
+              <span v-else-if="index == 1">🥈</span>
+              <span v-else-if="index == 2">🥉</span>
+              <span v-else>{{ index + 1 }}</span>
+            </td>
+            <td>
               {{ p.name }}
             </td>
             <td>{{ p.total }}</td>
@@ -27,7 +31,7 @@
 
 <style>
 .ranking-table .v-card__text {
-  height: 600px;
+  height: 400px;
   overflow: auto;
 }
 </style>
