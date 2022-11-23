@@ -3,7 +3,7 @@
     <v-simple-table>
       <thead>
         <tr>
-          <td class="name">{{ data[0][0] }}</td>
+          <td class="name text-center">{{ data[0][0] }}</td>
           <td
             v-for="(d, i) in data[0].slice(2, data[0].length - 3)"
             :key="'i' + i"
@@ -23,12 +23,20 @@
             Goleador <br />
             ⚽️
           </td>
-          <td>Puntos</td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(p, index) in data.slice(1, data.length)" :key="index">
-          <td class="name">{{ p[0] }}</td>
+          <td class="name text-center">
+            {{ p[0] }}
+            <br />
+            <small
+              >{{
+                $store.state.data.find((e) => e.name == p[0]).total
+              }}
+              ★</small
+            >
+          </td>
           <td
             v-for="(r, index) in vector"
             :key="index + 'idx'"
@@ -50,9 +58,6 @@
                 <div v-if="$store.state.results[index]" class="bgd"></div>
               </span>
             </v-chip>
-          </td>
-          <td class="text-center">
-            {{ $store.state.data.find((e) => e.name == p[0]).total }}
           </td>
         </tr>
       </tbody>
@@ -175,14 +180,14 @@ export default {
   background: green;
 }
 .name {
-  /* position: fixed;
+  position: sticky;
   background: #1e1e1e;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 115px;
-  left: 10px;
-  margin-right: 20px; */
+  left: -16px;
+  padding: 0px !important;
 }
 </style>
