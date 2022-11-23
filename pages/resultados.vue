@@ -186,7 +186,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 115px;
+  min-width: 105px;
   left: -1px;
   padding: 0px !important;
 }
