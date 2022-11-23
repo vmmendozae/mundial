@@ -9,6 +9,7 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
           <td
             v-for="(d, i) in data[0].slice(2, data[0].length - 3)"
             :key="'i' + i"
@@ -42,6 +43,7 @@
               ★</small
             >
           </td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
