@@ -187,7 +187,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   min-width: 115px;
-  left: -16px;
+  left: -1px;
   padding: 0px !important;
 }
 </style>
