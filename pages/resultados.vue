@@ -180,6 +180,7 @@ export default {
   background: green;
 }
 .name {
+  position: -webkit-sticky;
   position: sticky;
   background: #1e1e1e;
   z-index: 2;

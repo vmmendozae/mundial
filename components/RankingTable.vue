@@ -21,7 +21,7 @@
             <td>
               {{ p.name }}
             </td>
-            <td>{{ p.total }}</td>
+            <td class="text-center">{{ p.total }} ★</td>
           </tr>
         </tbody>
       </v-simple-table>
