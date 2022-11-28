@@ -52,22 +52,28 @@
             :key="index + 'idx'"
             class="text-center"
           >
-            <v-chip
-              v-if="$store.state.results[index]"
-              dark
-              :color="
-                $store.state.results[index].winner == p[index + 2]
-                  ? 'success'
-                  : $store.state.results[index].played
-                  ? 'error'
-                  : ''
-              "
-            >
-              <span>
-                {{ name2flag(p[index + 2]) }}
-                <div v-if="$store.state.results[index]" class="bgd"></div>
-              </span>
-            </v-chip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-chip
+                  v-if="$store.state.results[index]"
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  :color="
+                    $store.state.results[index].winner == p[index + 2]
+                      ? 'success'
+                      : $store.state.results[index].played
+                      ? 'error'
+                      : ''
+                  "
+                >
+                  <span>
+                    {{ name2flag(p[index + 2]) }}
+                  </span>
+                </v-chip>
+              </template>
+              <span>{{ p[index + 2] }}</span>
+            </v-tooltip>
           </td>
         </tr>
       </tbody>
